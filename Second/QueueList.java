@@ -1,10 +1,10 @@
 import java.util.*;
 
 public class QueueList<Item> implements Queue<Item> {
-    private DLL<Item> queue = new DLL();
+    private DoubleLinkedList<Item> queue = new DoubleLinkedList();
 
     public QueueList() {
-        queue = new DLL<>();
+        queue = new DoubleLinkedList<>();
     }
 
     @Override

@@ -1,10 +1,11 @@
 import java.util.*;
 
-public class DLL<Item> implements List<Item> {
-    private Node<Item> head, tail;
+public class DoubleLinkedList<Item> implements List<Item> {
+    private Node<Item> head;
+    private Node<Item> tail;
     private int sizeL;
 
-    public DLL() {
+    public DoubleLinkedList() {
         head = null;
         tail = null;
         sizeL = 0;
