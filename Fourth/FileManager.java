@@ -20,7 +20,9 @@ public class FileManager {
     private static void scanAndWrite(File dir, String output) {
 
         Logger log = Logger.getLogger(FileManager.class.getName());
-        try(FileOutputStream out = new FileOutputStream(output,true)) {
+        FileOutputStream fout = null;
+        try {
+            fout = new FileOutputStream(output,true);
             File directory = dir.getCanonicalFile();
             String[] allFiles = directory.list();
 
@@ -30,22 +32,30 @@ public class FileManager {
                     File currentFile = new File(path).getCanonicalFile();
                     if (currentFile.isDirectory()) {
                         byte[] buffer = (currentFile + "\n").getBytes();
-                        out.write(buffer);
+                        fout.write(buffer);
                         scanAndWrite(currentFile.getCanonicalFile(), output);
                     } else if (currentFile.isFile()) {
                         byte[] buffer = (currentFile + "\n").getBytes();
-                        out.write(buffer);
+                        fout.write(buffer);
                     }
                 }
             } else {
                 log.info( dir + " is empty");
             }
-        } catch (Exception ex) {
-
-            throw new RuntimeException();
         }
+        catch (Exception ex) {
 
-
+            System.out.println(ex.getMessage());
+        }
+        finally {
+                try {
+                    if (fout != null)
+                        fout.close();
+                }
+                catch (IOException ex){
+                    System.out.println(ex.getMessage());
+                }
+        }
     }
 
 

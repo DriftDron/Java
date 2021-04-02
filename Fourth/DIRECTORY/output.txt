@@ -1,4 +1,0 @@
-C:\Users\drift\IdeaProjects\Fourth\DIRECTORY\FILE1.txt
-C:\Users\drift\IdeaProjects\Fourth\DIRECTORY\FILE2.txt
-C:\Users\drift\IdeaProjects\Fourth\DIRECTORY\FOLDER
-C:\Users\drift\IdeaProjects\Fourth\DIRECTORY\output.txt
