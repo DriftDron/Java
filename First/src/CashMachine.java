@@ -1,20 +1,20 @@
 import java.io.InputStream;
 import java.util.*;
 
-public class ATM {
+public class CashMachine {
 
-    Long sum;
-    int n;
-    Long[] nominals;
-    ArrayList<ArrayList<Long>> combinations;
+    private Long sum;
+    private int n;
+    private Long[] nominals;
+    private ArrayList<ArrayList<Long>> combinations;
 
-    public ATM(Long sum, int n, Long[] nominals) {
+    public CashMachine(Long sum, int n, Long[] nominals) {
         this.sum = sum;
         this.n = n;
         this.nominals = nominals;
     }
 
-    public ATM(InputStream inputStream) {
+    public CashMachine(InputStream inputStream) {
 
         try {
             Scanner sc = new Scanner(inputStream);
@@ -41,6 +41,11 @@ public class ATM {
 
         if (set.size() != n) {
             throw new RuntimeException("Incorrect banknote values entered: there are duplicate nominals");
+        }
+
+        for(Iterator<Long> in = set.iterator(); in.hasNext();){
+            if(in.next() < 0)
+                throw new RuntimeException("Incorrect banknote values entered: there are negative nominals");
         }
     }
 
@@ -79,7 +84,7 @@ public class ATM {
 
     public static void main(String[] args) {
         InputStream inputStream = System.in;
-        ATM machine = new ATM(inputStream);
+        CashMachine machine = new CashMachine(inputStream);
         machine.getCombinations();
         System.out.println("Combination options:");
         for (ArrayList<Long> x : machine.combinations) {
