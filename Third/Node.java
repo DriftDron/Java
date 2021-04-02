@@ -59,10 +59,8 @@ public class Node<Key, Val> {
                     Comparable val1 = (Comparable) o1;
                     Comparable val2 = (Comparable) o2;
                     return val1.compareTo(val2);
-                } catch (RuntimeException e) {
-                    throw e;
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
+                } catch (ClassCastException e){
+                    throw new ClassCastException("Incomparable types");
                 }
             }
         };

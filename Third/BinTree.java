@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.lang.Math;
 import java.util.NoSuchElementException;
 
@@ -81,7 +82,6 @@ public class BinTree<Key, Val> {
 
     private Node<Key, Val> addRecursive(Key key, Val value, Node<Key, Val> root) {
         Node<Key, Val> newNode = new Node<>(key, value);
-
         if (value == null) {
             throw new NullPointerException("Null values are not permitted!");
         } else if (root == null) {
